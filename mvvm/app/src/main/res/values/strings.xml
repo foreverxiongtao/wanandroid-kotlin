@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MVVMProject</string>
+    <string name="str_nick_name">用户名</string>
+    <string name="str_pwd">密码</string>
+    <string name="str_pwd_again">再次输入密码</string>
+    <string name="str_register_save">注册</string>
+    <string name="str_net_error">网络异常,请重试</string>
+    <string name="str_register_failured">注册失败</string>
+    <string name="str_please_input_nick">请填写昵称</string>
+    <string name="str_input_pwd">请填写密码</string>
+    <string name="str_input_pwd_again">请再一次填写密码</string>
+    <string name="str_register_success">注册用户成功</string>
+    <string name="str_login">登陆</string>
+    <string name="str_login_nick_empty">用户名不能为空</string>
+    <string name="str_login_pwd_error">密码不能为空</string>
+    <string name="or">Or</string>
+</resources>
