@@ -29,7 +29,10 @@
     <color name="navigation_normal">#FF757575</color>
     <color name="color_cccccc">#cccccc</color>
     <color name="color_222222">#222222</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_999999">#999999</color>
     <color name="color_e6e6e6">#e6e6e6</color>
+    <color name="color_f3f3f3">#f3f3f3</color>
 
 
 </resources>

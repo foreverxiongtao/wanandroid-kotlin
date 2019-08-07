@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVVMProject</string>
+    <string name="app_name">WanAndroid</string>
     <string name="str_nick_name">用户名</string>
     <string name="str_pwd">密码</string>
     <string name="str_pwd_again">再次输入密码</string>
@@ -25,4 +25,7 @@
 
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
+    <string name="str_collection">收藏</string>
+    <string name="str_setting">设置</string>
+    <string name="str_about_us">关于我们</string>
 </resources>

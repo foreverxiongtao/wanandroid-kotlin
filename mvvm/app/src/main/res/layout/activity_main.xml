@@ -6,14 +6,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/white"
         android:id="@+id/dl_main_container"
+        tools:openDrawer="start"
         tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="match_parent">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:background="@color/white"
                 app:elevation="@dimen/dp_10"
                 app:itemIconTint="@drawable/nav_item_color_state"
                 app:itemTextColor="@drawable/nav_item_color_state"
@@ -33,16 +34,183 @@
                      android:layout_height="0dp"/>
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:background="@color/color_222222"
             android:layout_gravity="start"
             android:id="@+id/ctl_left_container"
+            android:background="@color/white"
             android:fitsSystemWindows="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_width="@dimen/dp_280"
+            android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_left_top_container"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:background="@drawable/ic_navigation_bg"
+                android:layout_height="@dimen/dp_200">
+            <ImageView
+                    android:id="@+id/iv_left_head"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/dp_10"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/logo"/>
+
+            <TextView
+                    app:layout_constraintRight_toRightOf="@+id/iv_left_head"
+                    app:layout_constraintLeft_toLeftOf="@+id/iv_left_head"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_left_head"
+                    android:id="@+id/nav_header_login_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/str_login"
+                    android:textSize="@dimen/sp_20"
+                    android:textColor="@color/white"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/item_background_selector"
+                android:id="@+id/ctl_menu_wanandroid"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_left_top_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60">
+
+            <ImageView
+                    android:id="@+id/tv_menu_wanandroid"
+                    android:layout_width="wrap_content"
+                       android:layout_marginLeft="@dimen/dp_20"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                       app:layout_constraintLeft_toLeftOf="parent"
+                       android:src="@drawable/ic_wan_android"
+                       android:layout_height="wrap_content"/>
+
+            <TextView
+                    app:layout_constraintLeft_toRightOf="@+id/tv_menu_wanandroid"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@color/color_666666"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/item_background_selector"
+                android:id="@+id/ctl_menu_collection"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_menu_wanandroid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60">
+
+            <ImageView
+                    android:id="@+id/tv_menu_collection"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/icon_like"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    app:layout_constraintLeft_toRightOf="@+id/tv_menu_collection"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/str_collection"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@color/color_666666"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_menu_setting"
+                android:background="@drawable/item_background_selector"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_menu_collection"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60">
+
+            <ImageView
+                    android:id="@+id/tv_menu_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/ic_setting"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    app:layout_constraintLeft_toRightOf="@+id/tv_menu_setting"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/str_setting"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@color/color_666666"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/item_background_selector"
+                android:id="@+id/ctl_menu_about_us"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_menu_setting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_60">
+
+            <ImageView
+                    android:id="@+id/tv_menu_about_us"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:src="@drawable/ic_about"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    app:layout_constraintLeft_toRightOf="@+id/tv_menu_about_us"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/str_about_us"
+                    android:textSize="@dimen/sp_16"
+                    android:textColor="@color/color_666666"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

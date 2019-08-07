@@ -6,14 +6,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.Fragment
 import com.example.mvvmproject.*
 import com.example.mvvmproject.base.activity.BaseActivity
+import com.example.mvvmproject.ui.activity.LoginActivity
 import com.example.mvvmproject.ui.fragment.HomeFragment
 import com.example.mvvmproject.ui.fragment.KnowlegeFragment
 import com.example.mvvmproject.ui.fragment.WXArticleFragment
+import com.example.mvvmproject.utils.startActivityForClass
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), View.OnClickListener {
+
 
     private var mFragments: MutableList<Fragment> = mutableListOf()
     private var mLstPosition: Int = INIT_FIRST_FRAGMENT
@@ -48,6 +51,15 @@ class MainActivity : BaseActivity() {
             }
             true
         }
+        initLeftMenuView()
+    }
+
+    private fun initLeftMenuView(){
+        ctl_menu_wanandroid.setOnClickListener(this)
+        ctl_menu_collection.setOnClickListener(this)
+        ctl_menu_setting.setOnClickListener(this)
+        ctl_menu_about_us.setOnClickListener(this)
+        ctl_left_top_container.setOnClickListener(this)
     }
 
 
@@ -123,6 +135,15 @@ class MainActivity : BaseActivity() {
         }
         toggle.syncState()
         dl_main_container.addDrawerListener(toggle)
+    }
+
+
+    override fun onClick(view: View?) {
+        when(view?.id){
+            R.id.ctl_left_top_container->{
+                startActivityForClass(LoginActivity::class.java)
+            }
+        }
     }
 
 }
