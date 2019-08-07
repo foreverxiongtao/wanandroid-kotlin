@@ -1,20 +1,21 @@
 package com.example.mvvmproject.ui.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.graphics.Color
+import android.util.Log
 import android.view.View
 import com.example.mvvmproject.R
 import com.example.mvvmproject.base.activity.BaseActivity
 import com.example.mvvmproject.constant.Constant
 import com.example.mvvmproject.model.entity.LoginResponse
+import com.example.mvvmproject.model.entity.Resource
+import com.example.mvvmproject.model.entity.Result
 import com.example.mvvmproject.model.entity.Status
-import com.example.mvvmproject.utils.StatusBarUtil
 import com.example.mvvmproject.utils.showToast
-import com.example.mvvmproject.utils.statusbar.Eyes
 import com.example.mvvmproject.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class RegisterActivity : BaseActivity() {
 
@@ -49,38 +50,50 @@ class RegisterActivity : BaseActivity() {
                     return
                 }
                 mViewModel.register(nickName, pwd, pwdAgain)
+                    .observe(this@RegisterActivity, object : Observer<Resource<Result.Data<LoginResponse>>> {
+                        override fun onChanged(t: Resource<Result.Data<LoginResponse>>?) {
+                            t?.let {
+                                when (it.status) {
+                                    Status.ERROR -> {
+                                        showLoadingDialog(false)
+                                        showToast(R.string.str_net_error)
+                                    }
+                                    Status.SUCCESS -> {
+                                        showLoadingDialog(false)
+                                        val content = t.content
+                                        content?.let { content ->
+                                            when (content.errorCode) {
+                                                Constant.RESPONSE_SUCCESS -> {
+                                                    showToast(R.string.str_register_success)
+                                                    Log.d("onChanged", "onChanged")
+                                                    finish()
+                                                }
+                                                Constant.RESPONSE_FAILURE -> {
+                                                    showToast(content.errorMsg!!)
+                                                }
+                                                else -> {
+                                                    Log.d("onChanged", "onChanged")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    Status.LOADING -> {
+                                        showLoadingDialog(true)
+                                    }
+                                    else -> {
+                                        showLoadingDialog(false)
+                                        Log.d("onChanged", "onChanged")
+                                    }
+                                }
+                            }
+                        }
+                    })
             }
         })
     }
-    override fun initData() {
-        initTitleBar(toolbar,"")
-//        Eyes.setStatusBarLightMode(this, Color.WHITE)
-//        Eyes.setStatusBarLightMode(this, resources.getColor(R.color.white))
 
-//        mViewModel.addObserver(this, object : Observer<LoginResponse> {
-//            override fun onChanged(t: LoginResponse?) {
-//                t?.let {
-//                    it.status?.let { status ->
-//                        if (status == Status.Error) {
-//                            showToast(R.string.str_net_error)
-//                        }
-//                    } ?: kotlin.run {
-//                        it.errorCode?.let { errorCode ->
-//                            if (errorCode == Constant.RESPONSE_FAILURE) {
-//                                showToast(it.errorMsg!!)
-//                            } else if (errorCode == Constant.RESPONSE_SUCCESS) {
-//                                showToast(getString(R.string.str_register_success))
-//                            }
-//
-//                        } ?: run {
-//                            showToast(getString(R.string.str_register_failured))
-//                        }
-//                    }
-//                } ?: run {
-//                    showToast(getString(R.string.str_register_failured))
-//                }
-//            }
-//        })
+    override fun initData() {
+        initTitleBar(toolbar, resources.getString(R.string.str_register_save))
     }
 
 }

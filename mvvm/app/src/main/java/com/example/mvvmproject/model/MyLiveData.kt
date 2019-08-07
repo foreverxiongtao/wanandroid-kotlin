@@ -1,6 +1,6 @@
 package com.example.mvvmproject.model
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 
 class MyLiveData<T> : MutableLiveData<T>() {
     override fun postValue(value: T) {

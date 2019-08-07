@@ -17,7 +17,7 @@
 package com.android.example.github.util
 
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.example.mvvmproject.api.ApiResponse
 import retrofit2.Call
 import retrofit2.CallAdapter

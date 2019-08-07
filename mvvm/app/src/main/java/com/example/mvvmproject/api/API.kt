@@ -1,6 +1,6 @@
 package com.example.mvvmproject.api
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.example.mvvmproject.model.entity.LoginResponse
 import com.example.mvvmproject.model.entity.Resource
 import com.example.mvvmproject.model.entity.Result
@@ -38,5 +38,5 @@ interface API {
         @Field("username") username: String,
         @Field("password") password: String,
         @Field("repassword") repassowrd: String
-    ): Call<LoginResponse>
+    ): LiveData<ApiResponse<Result.Data<LoginResponse>>>
 }

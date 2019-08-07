@@ -9,6 +9,7 @@
     <dimen name="dp_6">6dip</dimen>
     <dimen name="dp_10">10dip</dimen>
     <dimen name="dp_12">12dip</dimen>
+    <dimen name="dp_16">16dip</dimen>
     <dimen name="dp_20">20dip</dimen>
     <dimen name="dp_30">30dip</dimen>
     <dimen name="dp_40">40dip</dimen>
@@ -30,6 +31,7 @@
     <dimen name="sp_36">36sp</dimen>
     <dimen name="dp_32">32dip</dimen>
     <dimen name="dp_80">80dip</dimen>
+    <dimen name="dp_60">60dip</dimen>
 
 
 </resources>

@@ -1,28 +1,22 @@
 package com.example.mvvmproject.ui.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.graphics.Color
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.example.mvvmproject.R
-import com.example.mvvmproject.api.ApiResponse
-import com.example.mvvmproject.api.ApiSuccessResponse
 import com.example.mvvmproject.base.activity.BaseActivity
 import com.example.mvvmproject.constant.Constant
 import com.example.mvvmproject.model.entity.LoginResponse
 import com.example.mvvmproject.model.entity.Resource
 import com.example.mvvmproject.model.entity.Result
 import com.example.mvvmproject.model.entity.Status
-import com.example.mvvmproject.utils.StatusBarUtil
 import com.example.mvvmproject.utils.showToast
 import com.example.mvvmproject.utils.startActivityForClass
-import com.example.mvvmproject.utils.statusbar.Eyes
 import com.example.mvvmproject.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
     private val mUserViewModel: UserViewModel by lazy {
@@ -35,7 +29,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 handleLogin()
             }
             R.id.btn_login_register -> {
-                startActivityForClass(StatusBarWhiteToolBarActivity::class.java)
+                startActivityForClass(RegisterActivity::class.java)
             }
         }
     }
@@ -49,7 +43,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initView(rootView: View) {
-        initTitleBar(toolbar, "")
+        initTitleBar(toolbar, resources.getString(R.string.str_login))
         btn_login_register.setOnClickListener(this)
         btn_login.setOnClickListener(this)
     }
@@ -85,6 +79,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                                 when (content.errorCode) {
                                     Constant.RESPONSE_SUCCESS -> {
                                         Log.d("onChanged", "onChanged")
+                                        showToast(R.string.str_login_suceess)
                                     }
                                     Constant.RESPONSE_FAILURE -> {
                                         showToast(content.errorMsg!!)

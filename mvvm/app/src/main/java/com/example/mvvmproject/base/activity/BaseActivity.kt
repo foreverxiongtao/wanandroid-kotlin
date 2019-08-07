@@ -3,9 +3,9 @@ package com.example.mvvmproject.base.activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +13,7 @@ import com.example.mvvmproject.R
 import com.example.mvvmproject.utils.dip2px
 import com.example.mvvmproject.utils.statusbar.Eyes
 import com.github.ybq.android.spinkit.SpinKitView
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
  *    author : desperado
@@ -32,6 +33,7 @@ open abstract class BaseActivity : AppCompatActivity() {
         return@lazy view
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initParams(intent)
@@ -49,7 +51,7 @@ open abstract class BaseActivity : AppCompatActivity() {
     abstract fun initView(rootView: View)
     abstract fun initData()
 
-    protected fun showLoadingDialog(visable: Boolean) {
+    fun showLoadingDialog(visable: Boolean) {
         if (mSpintView.parent == null) {
             val layoutParams: ConstraintLayout.LayoutParams = ConstraintLayout.LayoutParams(
                 ConstraintLayout.LayoutParams.WRAP_CONTENT,
@@ -70,12 +72,17 @@ open abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-    protected fun initTitleBar(toolbar: Toolbar, title: String) {
-        toolbar.title = title
+    fun initTitleBar(toolbar: Toolbar, title: String) {
+        tv_toolbar_title.text = title
+        toolbar.title = ""
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar.setNavigationIcon(R.mipmap.icon_arrow_back)
         toolbar.setNavigationOnClickListener { finish() }
+    }
+
+    fun setTitle(title: String){
+        tv_toolbar_title.text = title
     }
 }

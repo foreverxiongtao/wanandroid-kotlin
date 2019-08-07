@@ -20,7 +20,7 @@ fun Context.showToast(content: String) {
 }
 
 fun Context.showToast(resId: Int) {
-    showToast(getString(resId))
+    showToast(resources.getString(resId))
 }
 
 fun Context.dip2px(context: Context, dpValue: Float): Int {

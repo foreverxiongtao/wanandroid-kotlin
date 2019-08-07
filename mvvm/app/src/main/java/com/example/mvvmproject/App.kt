@@ -2,7 +2,8 @@ package com.example.mvvmproject
 
 import android.app.Application
 import android.content.Context
-import android.support.multidex.MultiDexApplication
+import androidx.multidex.MultiDexApplication
+import com.example.mvvmproject.utils.AppUtils
 
 class App : MultiDexApplication() {
 
@@ -13,6 +14,7 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         mApp = this
+        AppUtils.init(this)
     }
 
 

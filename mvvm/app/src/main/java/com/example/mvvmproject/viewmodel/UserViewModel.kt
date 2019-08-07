@@ -1,9 +1,9 @@
 package com.example.mvvmproject.viewmodel
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import android.util.Log
 import com.example.mvvmproject.model.MyLiveData
 import com.example.mvvmproject.model.RegisterModel
@@ -23,8 +23,8 @@ class UserViewModel : ViewModel() {
         mLiveData.observe(lifecycleOwner, observer)
     }
 
-    fun register(username: String, password: String, repassword: String) {
-        mRegisterModel.register(username, password, repassword, mLiveData)
+    fun register(username: String, password: String, repassword: String):LiveData<Resource<Result.Data<LoginResponse>>> {
+        return  mRegisterModel.register(username, password, repassword)
     }
 
     fun login(username: String, password: String): LiveData<Resource<Result.Data<LoginResponse>>> {
